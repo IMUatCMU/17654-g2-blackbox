@@ -1,3 +1,5 @@
+package blackbox;
+
 public class TestResult {
     public boolean passed;
     public String input;

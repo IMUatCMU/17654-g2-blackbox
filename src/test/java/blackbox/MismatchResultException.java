@@ -1,3 +1,5 @@
+package blackbox;
+
 /**
  * Created by davidiamyou on 2016-10-09.
  */

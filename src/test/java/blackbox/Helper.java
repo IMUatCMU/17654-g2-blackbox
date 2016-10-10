@@ -1,9 +1,56 @@
+package blackbox;
+
 import analysis.ShapeClassifier;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Helper {
+
+    @Test
+    public void generateTest() {
+        for (int i = 0; i < allTripleTestParam.length; i++) {
+            testGenerator("testAllTriples", i, "data");
+        }
+    }
+
+    public void testGenerator(String namePrefix, int index, String dataListName) {
+        String src = "";
+
+        src += "@Test\n";
+        src += "public void " + namePrefix + index + "() {\n";
+        src += "\tTestData d = " + dataListName + ".get(" + index +");\n";
+        src += "\tHelper.executeTestWithAssert(d);\n";
+        src += "}\n\n";
+        System.out.println(src);
+    }
+
+    public static void executeTestWithAssert(TestData testData) {
+        ShapeClassifier sc = new ShapeClassifier();
+        try {
+            for (int i = 0; i < testData.runCount; i++) {
+                String result = sc.evaluateGuess(testData.input);
+                if ("Msg".equals(testData.expectResult)) {
+                    continue;
+                }
+
+                // Compare
+                Assert.assertEquals(testData.expectResult, result);
+            }
+
+            // should have exited, but didn't
+            if (testData.expectResult.equals("Msg")) {
+                Assert.fail("Should have exited, but didn't.");
+            }
+        } catch (NoExitSecurityManager.ExitException ex) {
+            // expect exit, and did
+            if (!testData.expectResult.equals("Msg")) {
+                Assert.fail("Didn't expect exit, but did.");
+            }
+        }
+    }
 
     public static void executeTest(List<TestData> data) {
         List<TestResult> results = new ArrayList<>();

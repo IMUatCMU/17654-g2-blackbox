@@ -1,6 +1,5 @@
-import static org.junit.Assert.*;
+package blackbox;
 
-import analysis.ShapeClassifier;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,20 +9,19 @@ import java.util.List;
 /**
  * Created by davidiamyou on 2016-10-09.
  */
-public class AllSingleTests {
-
+public class AllPairTests {
     private List<TestData> data = new ArrayList<>();
 
     @Before
     public void setup() {
         System.setSecurityManager(new NoExitSecurityManager());
-        for (Object[] each : Helper.allSingleTestParam) {
+        for (Object[] each : Helper.allPairTestParam) {
             data.add(new TestData(each));
         }
     }
 
     @Test
-    public void testAllSingles() {
+    public void testAllPairs() {
         Helper.executeTest(data);
     }
 }

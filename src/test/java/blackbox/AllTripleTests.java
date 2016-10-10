@@ -1,25 +1,30 @@
+package blackbox;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by davidiamyou on 2016-10-09.
- */
-public class AllPairTests {
+public class AllTripleTests {
+
     private List<TestData> data = new ArrayList<>();
 
     @Before
     public void setup() {
         System.setSecurityManager(new NoExitSecurityManager());
-        for (Object[] each : Helper.allPairTestParam) {
+        for (Object[] each : Helper.allTripleTestParam) {
             data.add(new TestData(each));
         }
     }
 
     @Test
-    public void testAllPairs() {
+    public void printAll() {
+        data.forEach(testData -> System.out.println(testData.input));
+    }
+
+    @Test
+    public void testAllTriples() {
         Helper.executeTest(data);
     }
 }

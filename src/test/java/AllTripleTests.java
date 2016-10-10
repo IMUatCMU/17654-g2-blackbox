@@ -17,6 +17,11 @@ public class AllTripleTests {
     }
 
     @Test
+    public void printAll() {
+        data.forEach(testData -> System.out.println(testData.input));
+    }
+
+    @Test
     public void testAllTriples() {
         Helper.executeTest(data);
     }

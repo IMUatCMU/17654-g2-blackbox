@@ -82,10 +82,18 @@ public class ShapeClassifier {
             isSizeGuessCorrect = false;
         }
 
-        if ( 0 == (calcPerim % 2) && evenOddGuess.equals("Yes")) {
+        int sideProduct = 1;
+        if (parameters.length == 0) {
+            sideProduct = 0;
+        } else {
+            for (int i = 0; i < parameters.length; i++) {
+                sideProduct *= parameters[i];
+            }
+        }
+        if ( 0 == (sideProduct % 2) && evenOddGuess.equals("Yes")) {
             isEvenOddCorrect = true;
         }
-        else if ( 0 != (calcPerim % 2) && evenOddGuess.equals("No")) {
+        else if ( 0 != (sideProduct % 2) && evenOddGuess.equals("No")) {
             isEvenOddCorrect = true;
         }
         else {
@@ -125,6 +133,10 @@ public class ShapeClassifier {
         }
 
         else if (side2 == side3) {
+            return (2 * side1) + (2 * side2);
+        }
+
+        else if (side1 == side3) {
             return (2 * side1) + (2 * side2);
         }
 

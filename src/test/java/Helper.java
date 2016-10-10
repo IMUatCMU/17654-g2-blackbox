@@ -114,7 +114,7 @@ public class Helper {
     public static final Object[][] allTripleTestParam = new Object[][]{
             {"Yes", 1, "Ellipse", "Large", "Odd", "4093", "4095", "", ""},
             {"Yes", 2, "Ellipse", "Small", "Even", "2", "4", "", ""},
-            {"Yes", 3, "Ellipse", "Large", "Even", "4094", "4094", "", ""},
+            {"Yes", 3, "Ellipse", "Large", "Even", "4094", "4092", "", ""},
             {"No", 1, "Ellipse", "Large", "Even", "4094", "4092", "4092", ""},
             {"No", 2, "Ellipse", "Small", "Odd", "1", "3", "3", ""},
             {"Msg", 3, "Ellipse", "Large", "Even", "4094", "4092", "4092", ""},
